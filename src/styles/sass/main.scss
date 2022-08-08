@@ -1,0 +1,21 @@
+@import "abstracts/_variables.scss";
+@import "base/_typography.scss";
+@import "components/_components.scss";
+@import "layout/_layout.scss";
+@import "animations/animations";
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: whitesmoke;
+}
+
+.active{
+    cursor: pointer;
+    color: $color-orange;
+
+}

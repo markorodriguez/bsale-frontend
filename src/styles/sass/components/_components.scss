@@ -1,0 +1,119 @@
+.card {
+    display: flex;
+    gap: 0.5rem;
+    flex-direction: column;
+    border: 2px solid $color-gray-blue;
+    padding: 1rem;
+    border-radius: 1.2rem;
+    box-shadow: 0 0 5px rgba($color-dark-blue, 0.1);
+    background-color: white;
+    
+    @media (max-width:480px) {
+        align-items: center;
+        justify-content: space-around;
+        flex-direction: row;
+        min-height: 250px;
+        img{
+            width: 50%;
+        }
+    }
+
+    @media (min-width:480px) {
+        text-align: center;
+        justify-content: space-between;
+        img {
+            width:  50%;
+            margin: 0 auto;
+        }
+    }
+
+    &__info {
+        width: 100%;
+        padding-top: 1rem;
+        margin: 0 auto;
+        height: min-content;
+        color: $color-dark-blue;
+        &--sub{
+            font-size: 1.4rem;
+            color: $color-orange;
+            font-weight: 600;
+        }
+        &--name{
+            margin: 5px 0px;
+            font-size: 1.8rem;
+            font-weight: 600;
+        }
+        &--price{
+            font-size: 1.6rem;
+            font-weight: 600;
+        }
+        &--discount{
+            border-radius: 5px;
+            margin: 0 5px;
+            padding: 0 10px;
+            color: $color-orange;
+            background-color: $color-orange-pale;
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+        &--base{
+            color: $color-gray-blue;
+            font-weight: 600;
+            text-decoration: line-through;
+            font-size: 1.5rem;
+        }
+    }
+
+}
+
+.btn{
+
+    background-color: rgba($color-orange, $alpha: 0.9);
+    color: $color-light-gray;
+    font-weight: 600;
+    margin: 10px 0;
+    border-radius: 5px;
+    padding: 10px 20px;
+    border: 0px;
+    cursor: pointer;
+    box-shadow: 0px 5px 20px rgba($color-dark-gray-blue, 0.3);
+
+    &:hover{
+        transition: .2s all ease-in-out;
+        background-color: rgba($color-orange, $alpha: 1);
+    }
+
+}
+
+#product-filter{
+    margin: 2rem auto;
+    text-align: center;
+    input{
+        padding: 10px 20px;
+        border: none;
+        border-bottom: 2px solid black;
+
+        &:focus{
+           outline: none;
+           border-bottom: 2px solid rgba($color-orange, $alpha: 1);
+        }
+    }
+
+}
+
+#pagination-container{
+    margin: 2rem 0;
+    text-align: center;
+    .pagination__button{
+        cursor: pointer;
+        border: 2px solid $color-orange;
+        padding: 2px 5px;
+        border-radius: 5px;
+        margin: 0 0.5rem;
+        &:hover{
+            background-color: rgba($color-orange, $alpha: 0.2);
+            color: rgba($color-orange, $alpha: 1);
+            font-weight: 600;
+        }
+    }
+}
