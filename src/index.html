@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="./img/store-icon-8.jpg" type="image/x-icon">
+    <link rel="stylesheet" href="./styles/css/styles.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+    <title>Desafío Bsale</title>
+</head>
+
+<body onload="firstLoad()" >
+    <!--SPINNER-->
+    <div>
+
+    </div>
+    <!--CONTENT-->
+    <div id="content">
+        <nav class="nav">
+            <div class="nav__container">
+                <div class="nav__container--show">
+                    <div class="nav__brand">
+                        
+                            <h1 id="h1_brand">Bsale Store</h1>
+                        
+                        <div class="nav__container__icon">
+                            <em id="bar-icon" class="fa-solid fa-bars"></em>
+                        </div>
+
+                    </div>
+
+                    <div id="dropdown" class="nav__options ">
+                    </div>
+
+                    <div class="nav__car">
+                        <em  class="fa-solid fa-cart-shopping"></em>  
+                    </div>
+
+                </div>
+
+            </div>
+            
+    
+        </nav>
+
+        <form id="product-filter" >
+            <input type="text" id="product-input" placeholder="Busque un producto">
+        </form>
+       
+
+        <div id="grid-product" class="grid-products">
+
+        </div>
+
+        <div id="pagination-container">
+        </div>
+
+    </div>
+    
+    <script src="https://kit.fontawesome.com/3c79500f80.js" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <script src="./js/index.js"></script>
+</body>
+
+</html>
