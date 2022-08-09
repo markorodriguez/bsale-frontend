@@ -33,7 +33,7 @@ productFilter.addEventListener("submit", async (e) => {
   e.preventDefault();
   const productToSearch = document.getElementById("product-input").value;
 
-  const product = await fetch("http://localhost:5000/products/buscar", {
+  const product = await fetch("https://bsale-markorod.herokuapp.com/products/buscar", {
     method: "POST",
     headers: {
       Accept: "application/json",
@@ -68,7 +68,7 @@ document.getElementById("h1_brand").addEventListener("click", () => {
 });
 
 const getCategories = async () => {
-  const fetchedCategories = await fetch("http://localhost:5000/categories");
+  const fetchedCategories = await fetch("https://bsale-markorod.herokuapp.com/categories");
   const dataCategories = await fetchedCategories.json();
 
   const categoryItems = dataCategories.map((category) => {
@@ -94,7 +94,7 @@ const getCategories = async () => {
 };
 
 const getProducts = async () => {
-  const fetchedProducts = await fetch("http://localhost:5000/products", {
+  const fetchedProducts = await fetch("https://bsale-markorod.herokuapp.com/products", {
     method: "POST",
     headers: {
       Accept: "application/json",
@@ -163,7 +163,7 @@ const renderPagination = (length) => {
 };
 
 const getPaginatedResults = async (page) => {
-  const products = await fetch("http://localhost:5000/products/paginado", {
+  const products = await fetch("https://bsale-markorod.herokuapp.com/products/paginado", {
     method: "POST",
     headers: {
       Accept: "application/json",
@@ -181,7 +181,7 @@ const getPaginatedResults = async (page) => {
 
 const filterProductsByCategory = async (categoryId) => {
   const filteredProducts = await fetch(
-    "http://localhost:5000/products/filtrado-categoria",
+    "https://bsale-markorod.herokuapp.com/products/filtrado-categoria",
     {
       method: "POST",
       headers: {
