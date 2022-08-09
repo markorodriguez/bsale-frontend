@@ -107,6 +107,20 @@ const getProducts = async () => {
   renderPagination(dataProducts.numberOfPages);
 };
 
+const toastAgregar = () => {
+  Toastify({
+    text: "Producto agregado al carrito",
+    duration: 3000,
+    gravity: "top",
+    position: "right", 
+    stopOnFocus: true, 
+    style: {
+      background: "linear-gradient(to right, #ff416c, #ff4b2b)",
+      fontSize: "1.2rem"
+    },
+  }).showToast();
+}
+
 const renderProducts = (arrayProducts) => {
   const productsItems = arrayProducts.map((product) => {
     return `
@@ -126,7 +140,7 @@ const renderProducts = (arrayProducts) => {
             <span class="card__info--base">CLP ${product.price}</span> <br/> `
                 : `<span class="card__info--price">CLP ${product.newPrice}</span> <br/>`
             }
-            <button class="btn">Agregar</button>
+            <button class="btn" onclick="toastAgregar()">Agregar</button>
             </div>
         </div>
         `;
