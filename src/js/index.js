@@ -4,9 +4,9 @@ const gridProducts = document.getElementById("grid-product");
 const navOptions = document.getElementsByClassName("nav__option");
 const productFilter = document.getElementById("product-filter");
 const paginationContainer = document.getElementById("pagination-container");
-const paginationElements =
-  document.getElementsByClassName("pagination__button");
+const paginationElements = document.getElementsByClassName("pagination__button");
 
+//Responsividad del navbar
 window.addEventListener("resize", () => {
   if (window.innerWidth > 480) {
     dropDown.style.display = "inherit";
@@ -15,12 +15,14 @@ window.addEventListener("resize", () => {
   }
 });
 
+//Responsividad del navbar
 if (window.innerWidth > 480) {
   dropDown.style.display = "inherit";
 } else {
   dropDown.style.display = "none";
 }
 
+//Activar el menú dropdown 
 carIcon.addEventListener("click", () => {
   if (dropDown.style.display == "none") {
     dropDown.style.display = "block";
@@ -29,6 +31,7 @@ carIcon.addEventListener("click", () => {
   }
 });
 
+//Búsqueda de producto mediante el campo de texto
 productFilter.addEventListener("submit", async (e) => {
   e.preventDefault();
   const productToSearch = document.getElementById("product-input").value;
@@ -47,6 +50,7 @@ productFilter.addEventListener("submit", async (e) => {
     }
   );
 
+//Notificar si no hay productos con el nombre ingresado
   const dataProducts = await product.json();
   if (dataProducts.results.length == 0) {
     Toastify({
@@ -62,14 +66,18 @@ productFilter.addEventListener("submit", async (e) => {
     }).showToast();
     getProducts();
   }
+
+//Renderizar productos y paginación correspondiente
   renderProducts(dataProducts.results);
   renderPagination(dataProducts.numberOfPages);
 });
 
+//Refrescar la página si clickea el logo
 document.getElementById("h1_brand").addEventListener("click", () => {
   window.location.reload();
 });
 
+//Obtener las categorías desde la BD
 const getCategories = async () => {
   const fetchedCategories = await fetch(
     "https://bsale-markorod.herokuapp.com/categories",
@@ -84,6 +92,7 @@ const getCategories = async () => {
 
   const dataCategories = await fetchedCategories.json();
 
+//Generar los elementos HTML correspondientes para categoría 
   const categoryItems = dataCategories.map((category) => {
     return `
         <div>
@@ -94,6 +103,7 @@ const getCategories = async () => {
 
   dropDown.innerHTML = categoryItems.join(" ");
 
+//Marcar la categoría clickeada por el usuario  
   for (let i = 0; i < navOptions.length; i++) {
     navOptions[i].addEventListener("click", () => {
       navOptions[i].classList.add("active");
@@ -106,6 +116,7 @@ const getCategories = async () => {
   }
 };
 
+//Obtener productos de la base de datos
 const getProducts = async () => {
   const fetchedProducts = await fetch(
     "https://bsale-markorod.herokuapp.com/products",
@@ -119,10 +130,12 @@ const getProducts = async () => {
   );
   const dataProducts = await fetchedProducts.json();
 
+//Renderizar los productos y la paginación correspondiente  
   renderProducts(dataProducts.results);
   renderPagination(dataProducts.numberOfPages);
 };
 
+//Acción cuando se clickea el botón de agregar (Simula un carrito)
 const toastAgregar = () => {
   Toastify({
     text: "Producto agregado al carrito",
@@ -137,6 +150,7 @@ const toastAgregar = () => {
   }).showToast();
 };
 
+//Generar los cards respectivos para cada producto
 const renderProducts = (arrayProducts) => {
   const productsItems = arrayProducts.map((product) => {
     return `
@@ -163,6 +177,7 @@ const renderProducts = (arrayProducts) => {
   gridProducts.innerHTML = productsItems.join(" ");
 };
 
+//Generar items de la paginación según la cantidad de páginas que posee
 const renderPagination = (length) => {
   const paginationButtons = [];
   for (let i = 0; i < length; i++) {
@@ -175,6 +190,7 @@ const renderPagination = (length) => {
   paginationContainer.innerHTML = paginationButtons.join(" ");
 };
 
+//Obtener productos según el número de la página
 const getPaginatedResults = async (page) => {
   const products = await fetch(
     "https://bsale-markorod.herokuapp.com/products/paginado",
@@ -195,6 +211,7 @@ const getPaginatedResults = async (page) => {
   renderProducts(dataProducts.results);
 };
 
+//Filtrar productos según la categoría clickeada
 const filterProductsByCategory = async (categoryId) => {
   const filteredProducts = await fetch(
     "https://bsale-markorod.herokuapp.com/products/filtrado-categoria",
@@ -211,10 +228,13 @@ const filterProductsByCategory = async (categoryId) => {
   );
 
   const dataProducts = await filteredProducts.json();
+
+//renderizar los productos y paginación correspondiente
   renderProducts(dataProducts.results);
   renderPagination(dataProducts.numberOfPages);
 };
 
+//Función ejecutada en el evento onLoad del HTML
 const firstLoad = () => {
   getCategories();
   getProducts();
